@@ -1,92 +1,25 @@
-class Bullet{
-    private double angle;
+public class Bullet {
     private double speed;
-    private int damage;
-    private int x;
-    private int y;
-    private char color;
-
-    public Bullet(double angle,double speed,int damage,int x,int y,char color){
-        this.angle=angle;
-        this.speed=speed;
-        damage=10;
-        this.x=x;
-        this.y=y;
-        this.color=color;
-    }
-    public void move(double angle){
-        if((angle>=0)&&(angle<90)){
-            if(angle==0){
-                x++;
-            }else{
-                x++;
-                y--;
-            }
-        }
-        else if((angle>=90)&&(angle<180)){
-            if(angle==90){
-                y--;
-            }else{
-                x--;
-                y--;
-            }
-        }
-        else if((angle>=180)&&(angle<270)){
-            if(angle==180){
-                x--;
-            }else{
-                x--;
-                y++;
-            }
-        }
-        else if((angle>=270)&&(angle<=360)){
-            if(angle==270){
-                y++;
-            }else{
-                x++;
-                y++;
-            }
-            if(angle>=360){
-                angle=0;
-            }
-        }
-    }
-
-    public double getAngle() {
-        return angle;
-    }
-    public char getColor() {
-        return color;
-    }
-    public int getDamage() {
-        return damage;
-    }
-    public int getX() {
-        return x;
-    }
-    public int getY() {
-        return y;
-    }
-    public double getSpeed() {
-        return speed;
-    }
-    public void setAngle(double angle) {
+    private double angle;
+    private Point p;
+    private double Ax;
+    private double Ay;
+    private boolean enable;
+    public Bullet (double angle, Point p){
+        enable = true;
+        speed = Config.SPEED_BULLET;
         this.angle = angle;
+        this.p = p;
+        Ax= speed * Math.cos(angle);
+        Ay = speed * Math.sin(angle);
     }
-    public void setColor(char color) {
-        this.color = color;
+    public void uptate Location () {
+        p.setX(p.getX+(int) Ax);
+        p.setY(p.getY+(int) Ay);
+        if(p.get x<0 ||
+        p.getX>Config.SRE.SCREN||)
+        p.getY < 0 ||
+        p.getY >config.SIZE_SCREEN_Y {
+            enable = false
+        }
     }
-    public void setDamage(int damage) {
-        this.damage = damage;
-    }
-    public void setX(int x) {
-        this.x = x;
-    }
-    public void setY(int y) {
-        this.y = y;
-    }
-    public void setSpeed(double speed) {
-        this.speed = speed;
-    }
-
-}
